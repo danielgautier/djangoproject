@@ -1,6 +1,6 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'polls/style1.css' %}">
+<!--<link rel="stylesheet" type="text/css" href="{% static 'polls/style1.css' %}"> -->
 
 
 
@@ -16,24 +16,14 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Cover Template · Bootstrap</title>
-
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/cover/">
-
+    <title>Poll app</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
     <!-- Bootstrap core CSS -->
-<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
-<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
-<meta name="theme-color" content="#563d7c">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">  
+
    
    
    
@@ -56,42 +46,45 @@
     <!-- Custom styles for this template -->
     <link href="cover.css" rel="stylesheet">
   </head>
-  <body class="text-center">
+  <body class="text-center bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <header class="masthead mb-auto">
     <div class="inner">
-      <h3 class="masthead-brand">Poll</h3>
-      <nav class="nav nav-masthead justify-content-center">
-        <a class="nav-link active" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Contact</a>
-      </nav>
+      
+      <ul class="nav nav-tabs bg-light justify-content-center "  role="tablist" >
+        
+        <li class="nav-item text-dark">
+          <a class="nav-link active" data-toggle="tab" href="#home"> <i class="fas fa-home">Home</i></a>
+        </li>
+        <li class="nav-item text-dark">
+          <a class="nav-link text-dark" data-toggle="tab" href="#menu1"><i class="fas fa-address-book" style=" text-shadow:2px 2px 4px #000000;">Contact</i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#menu2"><i class="fas fa-coffee ">about us</i></a>
+        </li>
+      </ul>
+      <h3 class="masthead-brand" style= "font-family: 'Berkshire Swash';font-size:60px;color:lightblue;text-shadow:2px 2px 4px #000000;">Polls app</h3>
     </div>
   </header>
 
   <main role="main" class="inner cover">
-    <h1 class="cover-heading">Cover your page.</h1>
-    <p class="lead"> 
-          Welcome on this poll app</p>	
-      
+    <div class=" jumbotron-fluid" style>
+        <h1 class="cover-heading pt-3" style ="font-family: 'Berkshire Swash';font-size: 30px; color:white;">Take some minutes to anwser the following Question.</h1>
+        
+    </div>
           {% if latest_question_list %}
-              <ul class="police1">
+              <ul class="pt-3 list-group accordion">
+                <div class="card ">
               {% for question in latest_question_list %}
-                  <li class="police1"><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                  <li class="list-group-item list-group-item-action card-header border "><a href="{% url 'polls:detail' question.id %}" data-toggle="collapse" class="card-link text-dark">{{ question.question_text }}</a></li>
               {% endfor %}
+                </div>
               </ul>
           {% else %}
               <p>No polls are available.</p>
           {% endif %}</p>
         </p>
-    <p class="lead">
-     <a href="#" class="btn btn-lg btn-secondary">Next </a>
-      
-    </p>
-    <p class="lead">
-       <a href="#" class="btn btn-lg btn-secondary">Previous</a>
-      
-    </p>
+   
   </main>
 
   <footer class="mastfoot mt-auto">
