@@ -1,6 +1,1 @@
 # djangoproject
-gggggggggggg
-
-kjhh
-
-hhhhhhhhhhhhh
